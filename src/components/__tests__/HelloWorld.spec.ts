@@ -30,7 +30,7 @@ describe('HelloWorld', () => {
     // @ts-ignore
     await vm.handleClick()
     // 等待 `message` 改變
-    await wrapper.vm.$nextTick() // 等待 DOM 更新
+    await vm.$nextTick() // 等待 DOM 更新
     expect(wrapper.text()).toContain('Async operation complete')
   })
   it('should handle async operations correctly', async () => {
@@ -42,9 +42,6 @@ describe('HelloWorld', () => {
     // 等待異步操作完成
     // 因是觸發按鈕，按鈕本身不是非同步事件，所以必須自定義非同步事件，才能測試
     await new Promise((resolve) => setTimeout(resolve, 1000))
-
-    // 等待 `message` 改變
-    await wrapper.vm.$nextTick() // 等待 DOM 更新
 
     // 檢查結果
     expect(wrapper.text()).toContain('Async operation complete')
