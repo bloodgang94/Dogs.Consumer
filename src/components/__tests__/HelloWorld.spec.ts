@@ -19,12 +19,15 @@ describe('HelloWorld', () => {
   })
   it('測試組件內函式', () => {
     const wrapper = mount(HelloWorld)
-    const vm = wrapper.vm
+    const vm = wrapper.vm 
+    // @ts-ignore
     expect(vm.greet(1, 2)).toBe(3)
   })
   it('awitfn', async () => {
     const wrapper = mount(HelloWorld)
-    const vm = wrapper.vm
+   
+    const vm = wrapper.vm 
+    // @ts-ignore
     await vm.handleClick()
     // 等待 `message` 改變
     await wrapper.vm.$nextTick() // 等待 DOM 更新
@@ -67,3 +70,6 @@ describe('HelloWorld', () => {
 
 // async 和 await：最常見的處理非同步測試的方式，讓測試代碼更具可讀性。
 // nextTick：等待 Vue 更新 DOM，確保非同步操作完成。
+
+// @ts-ignore 是 TypeScript 的一個指令，允許你在代碼中忽略某行代碼的 TypeScript 編譯錯誤。
+// 它的主要用途是當你知道一行代碼會引發類型錯誤，但你確信這行代碼在運行時是安全的時候使用。
